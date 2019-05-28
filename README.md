@@ -34,17 +34,17 @@ The goal of this project is not to familiarize you (the consumer of it) with how
 
 Additionally, this project utilizes the Flask-Migrate module to manage the database and its structure.  There will be a migrations directory with at least one migration made. Simply apply the latest migrations:
 
-    `(flask_many-to-many_model) C:\Users\<username>\<repo>\flask_many-to-many_model> flask db upgrade`
+    (flask_many-to-many_model) C:\Users\<username>\<repo>\flask_many-to-many_model> flask db upgrade
 
 Create the database:
 
-    `(flask_many-to-many_model) C:\Users\<username>\<repo>\flask_many-to-many_model> flask shell`
+    (flask_many-to-many_model) C:\Users\<username>\<repo>\flask_many-to-many_model> flask shell
 
-    `>>> db.create_all()`
+    >>> db.create_all()
 
 Then the application may be run:
 
-    `(flask_many-to-many_model) C:\Users\<username>\<repo>\flask_many-to-many_model> flask run`
+    (flask_many-to-many_model) C:\Users\<username>\<repo>\flask_many-to-many_model> flask run
 
 ## Environment File
 This repository uses an environment file (.env) that must be created locally.  This file normally contains secrets, which is why it is not synced here.  Please find an example below:
