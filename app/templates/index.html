@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Many-to-Many Model Example</h1>
+
+    <p>
+        This is an example of how a many-to-many relationship may exist in a Flask application model structure.
+    </p>
+    {# --------- #}
+    {# First Row #}
+    {# --------- #}
+    <div class="row">
+        {# !!!!!!!!!!!!!!!!!! #}
+        {# User Creation Card #}
+        {# !!!!!!!!!!!!!!!!!! #}
+        <div class="col">
+            <div class="card" id="userCreationCard">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create User</h5>
+                    <div class="form">
+                        <label for="usernameInput" id="usernameInputLabel">Username</label>
+                        <input class="form-control mb-2" type="text" name="usernameInput" id="usernameInput">
+                    </div>
+                    <button id="createUserBtn" class="btn btn-dark">Create User</button>
+                </div>
+            </div>
+        </div>
+
+        {# !!!!!!!!!!!!!!!!!!!!! #}
+        {# Channel Creation Card #}
+        {# !!!!!!!!!!!!!!!!!!!!! #}
+        <div class="col">
+            <div class="card" id="channelCreationCard">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create Channel</h5>
+                    <div class="form">
+                        <label for="channelnameInput" id="channelnameInputLabel">Channel Name</label>
+                        <input class="form-control mb-2" type="text" name="channelnameInput" id="channelnameInput">
+                    </div>
+                    <button id="createUserBtn" class="btn btn-dark">Create User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ---------- #}
+    {# Second Row #}
+    {# ---------- #}
+    <div class="row">
+        {# !!!!!!!!!!!!! #}
+        {# List of users #}
+        {# !!!!!!!!!!!!! #}
+        <div class="col">
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>User ID</th>
+                        <th>Subscriptions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list"></tbody>
+            </table>
+        </div>
+
+        {# !!!!!!!!!!!!!!!! #}
+        {# List of channels #}
+        {# !!!!!!!!!!!!!!!! #}
+        <div class="col">
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>Channel</th>
+                        <th>Channel ID</th>
+                        <th>Subscribers</th>
+                    </tr>
+                </thead>
+                <tbody id="channel-list"></tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
