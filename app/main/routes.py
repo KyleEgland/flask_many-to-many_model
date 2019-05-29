@@ -25,7 +25,7 @@ def index():
     return render_template('index.html')
 
 
-@bp.route('/adduser')
+@bp.route('/adduser', methods=['POST'])
 def adduser():
     if request.get_json():
         content = request.get_json()
@@ -34,5 +34,7 @@ def adduser():
 
         db.session.add(user)
         db.session.commit()
+
+        return jsonify({'Status': 'Success!'})
     else:
         return jsonify({'ERR': 'There was no json found in body of request'})

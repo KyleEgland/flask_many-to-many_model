@@ -16,11 +16,13 @@
             <div class="card" id="userCreationCard">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create User</h5>
-                    <div class="form">
-                        <label for="usernameInput" id="usernameInputLabel">Username</label>
-                        <input class="form-control mb-2" type="text" name="usernameInput" id="usernameInput">
-                    </div>
-                    <button id="createUserBtn" class="btn btn-dark">Create User</button>
+                    <form id="userForm">
+                        <div id="form-group">
+                            <label for="usernameInput" id="usernameInputLabel">Username</label>
+                            <input class="form-control mb-2" type="text" name="usernameInput" id="usernameInput">
+                        </div>
+                        <input type="submit" id="createUserBtn" class="btn btn-dark" value="Create User">
+                    </form>
                 </div>
             </div>
         </div>
@@ -36,7 +38,7 @@
                         <label for="channelnameInput" id="channelnameInputLabel">Channel Name</label>
                         <input class="form-control mb-2" type="text" name="channelnameInput" id="channelnameInput">
                     </div>
-                    <button id="createUserBtn" class="btn btn-dark">Create User</button>
+                    <button id="createChannelBtn" class="btn btn-dark">Create User</button>
                 </div>
             </div>
         </div>
@@ -78,4 +80,8 @@
             </table>
         </div>
     </div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
 {% endblock %}

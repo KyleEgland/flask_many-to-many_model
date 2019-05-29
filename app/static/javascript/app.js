@@ -1,40 +1,35 @@
-$(document).ready(function() {
-    console.log('Document loaded');
-    // Adding click event to login button
-    $('#loginButton').on('click', function() {
-        console.log('[*] Get token button clicked')
-        // Grab the form values
-        let auth_endpoint = $('#apiAuthEndpoint').val();
-        console.log('[*] Authorization Endpoint: ' + auth_endpoint)
+/*jshint esversion: 6*/
+// This application is for use with flas_many-to-many_model
 
-        let username = $('#username').val();
-        console.log('[*] Username: ' + username)
+// Event listener for Create User
+document.getElementById('userForm').addEventListener('submit', createUser);
 
-        let password = $('#passwd').val();
-        console.log('[*] Password: (not passing it through)')
+function getFormUserName() {
+    return document.getElementById('usernameInput').value;
+}
 
-        // Setup the request
-        req = $.ajax({
-            // The flask endpoint we'll trigger to actually send the request
-            url: '/gettoken',
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            // The data we want to send into flask
-            data: JSON.stringify({
-                'target': auth_endpoint,
-                'username': username,
-                'password': password
-            })
-        });
+function createUser(event) {
+    // Prevent the normal form submission
+    event.preventDefault();
 
-        console.log('This is after the ajax request');
+    // Get the username supplied in the username input field
+    let uname = document.getElementById('usernameInput').value;
 
-        // After the call has finished, update the text in the token
-        // display area in the html
-        req.done(function(data) {
-            $('#tokenresult').text(data.test_data);
-        });
+    fetch('/adduser', {
+        method: 'POST',
+        headers: new Headers(),
+        body:JSON.stringify({'username': uname})
+    })
+    .then((res) => {
+        let response = res.json();
+        console.log(response);
+    })
+    .catch((err) => console.log(err))
+}
 
-    });
-});
+document.getElementById('createChannelBtn').addEventListener('click', getChanName)
+
+function getChanName() {
+    let channelName = document.getElementById('channelnameInput').value;
+    console.log(channelName);
+}
