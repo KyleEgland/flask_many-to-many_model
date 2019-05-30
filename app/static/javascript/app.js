@@ -3,7 +3,7 @@
 
 // Event listeners
 document.getElementById('userForm').addEventListener('submit', createUser);
-document.getElementById('channelForm').addEventListener('submit', createChannel)
+document.getElementById('channelForm').addEventListener('submit', createChannel);
 
 function showAlert(message, className) {
     const alert_div = document.createElement('div');
@@ -28,7 +28,7 @@ function createUser(event) {
     let uname = document.getElementById('usernameInput').value;
     // Check for an empty input
     if (uname == '') {
-        return showAlert('Cannot be empty','danger')
+        return showAlert('Username cannot be empty','danger')
     }
     // Clear the input
     document.getElementById('usernameInput').value = '';
@@ -42,7 +42,13 @@ function createUser(event) {
         body:JSON.stringify({'username': uname})
     })
     .then((res) => res.json())
-    .then((data) => console.log(data)).catch((err) => console.log(err))
+    .then((data) => {
+        if (data['error']) {
+            showAlert(data['error'], 'danger')
+        } else {
+            showAlert(data['status'], 'dark')
+        }
+    }).catch((err) => console.log(err))
 }
 
 function createChannel(event) {
@@ -50,22 +56,28 @@ function createChannel(event) {
     event.preventDefault();
 
     // Get the username supplied in the username input field
-    let uname = document.getElementById('usernameInput').value;
+    let chan = document.getElementById('channelnameInput').value;
     // Check for an empty input
-    if (uname == '') {
-        return showAlert('Cannot be empty','danger')
+    if (chan == '') {
+        return showAlert('Channel name cannot be empty','danger')
     }
     // Clear the input
-    document.getElementById('usernameInput').value = '';
+    document.getElementById('channelnameInput').value = '';
 
-    fetch('/adduser', {
+    fetch('/addchannel', {
         method: 'POST',
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-type': 'application/json'
         },
-        body:JSON.stringify({'username': uname})
+        body:JSON.stringify({'channelname': chan})
     })
     .then((res) => res.json())
-    .then((data) => console.log(data)).catch((err) => console.log(err))
+    .then((data) => {
+        if (data['error']) {
+            showAlert(data['error'], 'danger')
+        } else {
+            showAlert(data['status'], 'dark')
+        }
+    }).catch((err) => console.log(err))
 }

@@ -39,8 +39,8 @@
                             <label for="channelnameInput" id="channelnameInputLabel">Channel Name</label>
                             <input class="form-control mb-2" type="text" name="channelnameInput" id="channelnameInput">
                         </div>
+                        <input type="submit" id="createChannelBtn" class="btn btn-dark" value="Create Channel">
                     </form>
-                    <button id="createChannelBtn" class="btn btn-dark">Create User</button>
                 </div>
             </div>
         </div>
@@ -62,7 +62,13 @@
                         <th>Subscriptions</th>
                     </tr>
                 </thead>
-                <tbody id="user-list"></tbody>
+                <tbody id="user-list">
+                    {% if users %}
+                        {% for user in users %}
+                            {% include '_userrow.html' %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
             </table>
         </div>
 
