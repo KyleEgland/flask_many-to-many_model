@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Many-to-Many Model Example</h1>
+    <h1 id="page-title">Many-to-Many Model Example</h1>
 
     <p>
         This is an example of how a many-to-many relationship may exist in a Flask application model structure.
@@ -34,10 +34,12 @@
             <div class="card" id="channelCreationCard">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create Channel</h5>
-                    <div class="form">
-                        <label for="channelnameInput" id="channelnameInputLabel">Channel Name</label>
-                        <input class="form-control mb-2" type="text" name="channelnameInput" id="channelnameInput">
-                    </div>
+                    <form id="channelForm">
+                        <div class="form-group">
+                            <label for="channelnameInput" id="channelnameInputLabel">Channel Name</label>
+                            <input class="form-control mb-2" type="text" name="channelnameInput" id="channelnameInput">
+                        </div>
+                    </form>
                     <button id="createChannelBtn" class="btn btn-dark">Create User</button>
                 </div>
             </div>

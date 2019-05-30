@@ -1,11 +1,23 @@
 /*jshint esversion: 6*/
 // This application is for use with flas_many-to-many_model
 
-// Event listener for Create User
+// Event listeners
 document.getElementById('userForm').addEventListener('submit', createUser);
+document.getElementById('channelForm').addEventListener('submit', createChannel)
 
-function getFormUserName() {
-    return document.getElementById('usernameInput').value;
+function showAlert(message, className) {
+    const alert_div = document.createElement('div');
+    // Pass in the className variable
+    alert_div.className = `alert alert-${className}`;
+    // Add the message
+    alert_div.appendChild(document.createTextNode(message));
+    // Insert the alert
+    const page_title = document.getElementById('page-title');
+
+    page_title.parentNode.insertBefore(alert_div, page_title);
+
+    // Clear alert after 3 seconds
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
 }
 
 function createUser(event) {
@@ -14,22 +26,46 @@ function createUser(event) {
 
     // Get the username supplied in the username input field
     let uname = document.getElementById('usernameInput').value;
+    // Check for an empty input
+    if (uname == '') {
+        return showAlert('Cannot be empty','danger')
+    }
+    // Clear the input
+    document.getElementById('usernameInput').value = '';
 
     fetch('/adduser', {
         method: 'POST',
-        headers: new Headers(),
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
+        },
         body:JSON.stringify({'username': uname})
     })
-    .then((res) => {
-        let response = res.json();
-        console.log(response);
-    })
-    .catch((err) => console.log(err))
+    .then((res) => res.json())
+    .then((data) => console.log(data)).catch((err) => console.log(err))
 }
 
-document.getElementById('createChannelBtn').addEventListener('click', getChanName)
+function createChannel(event) {
+    // Prevent the normal form submission
+    event.preventDefault();
 
-function getChanName() {
-    let channelName = document.getElementById('channelnameInput').value;
-    console.log(channelName);
+    // Get the username supplied in the username input field
+    let uname = document.getElementById('usernameInput').value;
+    // Check for an empty input
+    if (uname == '') {
+        return showAlert('Cannot be empty','danger')
+    }
+    // Clear the input
+    document.getElementById('usernameInput').value = '';
+
+    fetch('/adduser', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
+        },
+        body:JSON.stringify({'username': uname})
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data)).catch((err) => console.log(err))
 }
