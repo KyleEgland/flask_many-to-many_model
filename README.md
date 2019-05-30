@@ -54,9 +54,9 @@ FLASK_APP=flask_many_to_many.py
 SECURITY_KEY=development
 FLASK_ENV=development
 # This is for linux
-DATABASE_URL=sqlite:////home/<username>/<dir_to_repos>/flask_api_call_test/app.db
+DATABASE_URL=sqlite:////home/<username>/<dir_to_repos>/flask_many-to-many_model/app.db
 # This is for Windows
-DATABASE_URL=sqlite:///C:/Users/<username>/<dir_to_repos>/flask_api_call_test/app.db
+DATABASE_URL=sqlite:///C:/Users/<username>/<dir_to_repos>/flask_many-to-many_model/app.db
 ```
 
 ## Credits
