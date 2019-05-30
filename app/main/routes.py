@@ -23,8 +23,9 @@ from flask import request
 @bp.route('/index')
 def index():
     users = User.query
+    channels = Channel.query
     # Render index
-    return render_template('index.html', users=users)
+    return render_template('index.html', users=users, channels=channels)
 
 
 @bp.route('/adduser', methods=['POST'])

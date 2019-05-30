@@ -84,7 +84,13 @@
                         <th>Subscribers</th>
                     </tr>
                 </thead>
-                <tbody id="channel-list"></tbody>
+                <tbody id="channel-list">
+                    {% if channels %}
+                        {% for channel in channels %}
+                            {% include '_channelrow.html' %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
             </table>
         </div>
     </div>
