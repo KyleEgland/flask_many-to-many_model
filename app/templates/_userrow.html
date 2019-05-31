@@ -4,4 +4,9 @@
     <td>{{ user.id }}</td>
     <td>{{ user.username }}</td>
     <td>{{ user.subscriptions.count() }}</td>
+    <td>
+        <button class="btn" data-toggle="modal" data-target="#userEditModal" data-userid="{{ user.id }}" data-username="{{ user.username }}">
+            <i class="fas fa-edit"></i>
+        </button>
+    </td>
 </tr>

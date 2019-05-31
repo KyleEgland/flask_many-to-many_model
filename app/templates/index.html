@@ -1,5 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
+
+    {# --------------- #}
+    {# Bootstrap Modal #}
+    {# --------------- #}
+    {# This modal provides the editing window for a given user to allow editing that user's properties #}
+    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userEditModalLabel">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="error-placeholder"></div>
+                    <form id="usernameUpdateForm">
+                        <div class="form-group">
+                            <label for="usernameEditInput" class="col-form-label">Username:</label>
+                            <input type="text" class="form-control" id="usernameEditInput">
+                        </div>
+                        <input type="submit" id="usernameEditBtn" class="btn btn-dark" value="Update username">
+                    </form>
+                </div>
+                <table class="table table-striped mt-5">
+                    <thead>
+                        <tr>
+                            <th>Channel</th>
+                            <th>Channel ID</th>
+                            <th>Subscribers</th>
+                        </tr>
+                    </thead>
+                    <tbody id="channel-list">
+                        {% if channels %}
+                            {% for channel in channels %}
+                                {% include '_channelrow.html' %}
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark">Update user</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h1 id="page-title">Many-to-Many Model Example</h1>
 
     <p>
@@ -9,9 +57,9 @@
     {# First Row #}
     {# --------- #}
     <div class="row">
-        {# !!!!!!!!!!!!!!!!!! #}
+        {# ------------------ #}
         {# User Creation Card #}
-        {# !!!!!!!!!!!!!!!!!! #}
+        {# ------------------ #}
         <div class="col">
             <div class="card" id="userCreationCard">
                 <div class="card-body">
@@ -27,9 +75,9 @@
             </div>
         </div>
 
-        {# !!!!!!!!!!!!!!!!!!!!! #}
+        {# --------------------- #}
         {# Channel Creation Card #}
-        {# !!!!!!!!!!!!!!!!!!!!! #}
+        {# --------------------- #}
         <div class="col">
             <div class="card" id="channelCreationCard">
                 <div class="card-body">
@@ -50,9 +98,9 @@
     {# Second Row #}
     {# ---------- #}
     <div class="row">
-        {# !!!!!!!!!!!!! #}
+        {# ------------- #}
         {# List of users #}
-        {# !!!!!!!!!!!!! #}
+        {# ------------- #}
         <div class="col">
             <table class="table table-striped mt-5">
                 <thead>
@@ -60,6 +108,7 @@
                         <th>User</th>
                         <th>User ID</th>
                         <th>Subscriptions</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="user-list">
@@ -72,9 +121,9 @@
             </table>
         </div>
 
-        {# !!!!!!!!!!!!!!!! #}
+        {# ---------------- #}
         {# List of channels #}
-        {# !!!!!!!!!!!!!!!! #}
+        {# ---------------- #}
         <div class="col">
             <table class="table table-striped mt-5">
                 <thead>
@@ -96,6 +145,10 @@
     </div>
 {% endblock %}
 {% block scripts %}
+{# The scripts block is established in the base template, we're calling it in here and user "super()" to add to what is already there #}
 {{ super() }}
+{# This script is what drives the creation of users and channels on the page #}
 <script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+{# Script for modal control #}
+<!-- <script src="{{ url_for('static', filename='javascript/user_edit_modal.js') }}"></script> -->
 {% endblock %}

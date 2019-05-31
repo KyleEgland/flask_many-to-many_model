@@ -4,6 +4,9 @@
 // Event listeners
 document.getElementById('userForm').addEventListener('submit', createUser);
 document.getElementById('channelForm').addEventListener('submit', createChannel);
+document.getElementById('userEditModal').addEventListener('show.bs.modal', (event) => {
+    console.log('The modal happened');
+});
 
 function showAlert(message, className) {
     const alert_div = document.createElement('div');
@@ -80,4 +83,9 @@ function createChannel(event) {
             showAlert(data['status'], 'dark')
         }
     }).catch((err) => console.log(err))
+}
+
+function handleModal(event) {
+    console.log('Modal handler called');
+    event.preventDefault();
 }

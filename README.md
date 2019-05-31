@@ -65,3 +65,4 @@ Please reference the following resources to view the source(s) of this project.
 * [Creating Many-To-Many Relationships in Flask-SQLAlchemy](https://youtu.be/OvhoYbjtiKc) YouTube video by [Pretty Printed](https://prettyprinted.com/)
 * [The Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by [Miguel Grinberg](https://blog.miguelgrinberg.com/author/Miguel%20Grinberg)
 * [Bootstrap](https://getbootstrap.com/)
+* [FontAwesome](https://fontawesome.com/start)

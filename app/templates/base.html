@@ -9,16 +9,23 @@
         {% else %}
         <title>Flask Many-to-Many Example</title>
         {% endif %}
+        {# Bootstrap 4 stylesheet #}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        {# Font awesome inclusion #}
+        {# This is a kit registered to me, please get your own if you copy this code #}
+        <script src="https://kit.fontawesome.com/73725f25fb.js"></script>
     </head>
     <body>
         <div class="container">
+            {# This is where the markup will be inserted for the pages that inherit from the base #}
             {% block content %}{% endblock %}
         </div>
         {% block scripts %}
+        {# scripts for bootstrap 4 #}
         <script src="{{ url_for('static', filename='javascript/jquery-3.2.1.js') }}"></script>
         <script src="{{ url_for('static', filename='javascript/popper.min.js') }}"></script>
         <script src="{{ url_for('static', filename='javascript/bootstrap.js') }}"></script>
+        {# end bootstrap required scripts #}
         {% endblock %}
     </body>
 </html>
